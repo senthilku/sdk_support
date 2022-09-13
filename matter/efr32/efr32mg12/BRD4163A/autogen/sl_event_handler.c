@@ -28,7 +28,10 @@ void sl_platform_init(void)
 {
     CHIP_Init();
     sl_device_init_nvic();
+
+#ifndef CCP_SI917_BRINGUP	
     sl_board_preinit();
+#endif /* CCP_SI917_BRINGUP */	
     sl_device_init_dcdc();
     sl_device_init_hfxo();
     sl_device_init_lfxo();

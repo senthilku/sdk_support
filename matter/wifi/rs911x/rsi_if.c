@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "em_bus.h"
-#include "em_cmu.h"
-#include "em_gpio.h"
-#include "em_ldma.h"
-#include "em_usart.h"
+//#include "em_bus.h"
+//#include "em_cmu.h"
+//#include "em_gpio.h"
+//#include "em_ldma.h"
+//#include "em_usart.h"
+
+#include <stdbool.h>
 
 #include "sl_status.h"
 

@@ -1,5 +1,6 @@
 #include "sl_event_handler.h"
 
+#ifndef CCP_SI917_BRINGUP
 #include "em_chip.h"
 #include "gpiointerrupt.h"
 #include "pa_conversions_efr32.h"
@@ -28,13 +29,17 @@ void sl_platform_init(void)
 {
     CHIP_Init();
     sl_device_init_nvic();
+#ifndef CCP_SI917_BRINGUP
     sl_board_preinit();
+#endif /* CCP_SI917_BRINGUP */
     sl_device_init_dcdc();
     sl_device_init_hfxo();
     sl_device_init_lfxo();
     sl_device_init_clocks();
     sl_device_init_emu();
+#ifndef CCP_SI917_BRINGUP	
     sl_board_init();
+#endif /* CCP_SI917_BRINGUP */
     osKernelInitialize();
 #if defined(SL_CATALOG_POWER_MANAGER_PRESENT)
     sl_power_manager_init();
@@ -76,3 +81,5 @@ void sl_service_process_action(void) {}
 void sl_stack_process_action(void) {}
 
 void sl_internal_app_process_action(void) {}
+#endif /* CCP_SI917_BRINGUP */
+

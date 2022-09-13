@@ -31,6 +31,7 @@
 
 void sl_board_default_init(void)
 {
+#ifndef CCP_SI917_BRINGUP
   sl_board_disable_vcom();
-  
+#endif /* CCP_SI917_BRINGUP */  
 }

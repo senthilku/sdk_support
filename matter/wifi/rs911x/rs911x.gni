@@ -4,19 +4,32 @@ import("//build_overrides/pigweed.gni")
 
 examples_plat_dir = "${chip_root}/examples/platform/efr32"
 wifi_sdk_dir = "${chip_root}/third_party/silabs/matter_support/matter/wifi"
-wiseconnect_sdk_root = "${chip_root}/third_party/silabs/wiseconnect-wifi-bt-sdk"
+#wiseconnect_sdk_root = "${chip_root}/third_party/silabs/wiseconnect-wifi-bt-sdk"
+wiseconnect_sdk_root = "${chip_root}/third_party/silabs/wisemcu-wifi-bt-sdk"
 rs911x_cflags = []
 
 rs911x_src_plat = [
   "${wifi_sdk_dir}/rs911x/rsi_if.c",
-  "${wifi_sdk_dir}/rs911x/wfx_rsidev.c",
   "${wifi_sdk_dir}/rs911x/wfx_rsi_host.c",
   "${wifi_sdk_dir}/wfx_notify.cpp",
-  "${wifi_sdk_dir}/rs911x/hal/rsi_hal_mcu_interrupt.c",
-  "${wifi_sdk_dir}/rs911x/hal/rsi_hal_mcu_ioports.c",
-  "${wifi_sdk_dir}/rs911x/hal/rsi_hal_mcu_timer.c",
-  "${wifi_sdk_dir}/rs911x/hal/efx_spi_intf.c",
+
+  ##### /* rs9116 */  #####
+  #"${wifi_sdk_dir}/rs911x/hal/rsi_hal_mcu_interrupt.c",
+  #"${wifi_sdk_dir}/rs911x/hal/rsi_hal_mcu_ioports.c",
+  #"${wifi_sdk_dir}/rs911x/hal/rsi_hal_mcu_timer.c",
+  #"${wifi_sdk_dir}/rs911x/hal/efx_spi_intf.c",
+  #"${wifi_sdk_dir}/rs911x/wfx_rsidev.c",
+
+   ##### /* CCP (rs917) */  #####
+  "${wifi_sdk_dir}/rs917/hal/rsi_hal_mcu_m4.c",
+  "${wifi_sdk_dir}/rs917/hal/rsi_hal_mcu_m4_rom.c",
+  "${wifi_sdk_dir}/rs917/hal/rsi_hal_mcu_platform_init.c", 
+  "${wifi_sdk_dir}/rs917/hal/rsi_bootup_config.c",
+  "${wifi_sdk_dir}/rs917/hal/rsi_hal_mcu_interrupt.c",
+  "${wifi_sdk_dir}/rs917/hal/rsi_hal_mcu_timer.c",  
+
 ]
+
 rs911x_plat_incs = [
   "${wifi_sdk_dir}",
   "${wifi_sdk_dir}/hal",
@@ -69,6 +82,20 @@ rs911x_inc_plat = [
   "${wifi_sdk_dir}/rs911x",
   "${wifi_sdk_dir}/rs911x/hal",
   "${wiseconnect_sdk_root}/sapi/include",
+  #senthil
+  "${wiseconnect_sdk_root}/platforms/si91x/hal/inc",
+  "${wiseconnect_sdk_root}/platforms/si91x/boards/brd4325a/inc",
+  "${wiseconnect_sdk_root}/platforms/si91x/drivers/peripheral_drivers/inc",
+  "${wiseconnect_sdk_root}/platforms/si91x/drivers/systemlevel/inc",
+  "${wiseconnect_sdk_root}/platforms/si91x/core/chip/inc",
+  "${wiseconnect_sdk_root}/platforms/si91x/core/config",
+  "${wiseconnect_sdk_root}/platforms/si91x/drivers/cmsis_driver/config",
+  "${wiseconnect_sdk_root}/platforms/si91x/drivers/rom_driver/inc",
+  "${wiseconnect_sdk_root}/platforms/si91x/drivers/cmsis_driver",
+  "${wiseconnect_sdk_root}/platforms/si91x/drivers/cmsis_driver/CMSIS/Driver/Include",
+
+  "${wiseconnect_sdk_root}/platforms/si91x/core/cmsis",
+ 
 ]
 
 # Apparently - the rsi library needs this
@@ -93,8 +120,9 @@ rs911x_defs = [
   "EFX32_RS911X=1",
   "RS911X_WIFI",
   "RSI_WLAN_ENABLE",
-  "RSI_SPI_INTERFACE",
+  #"RSI_SPI_INTERFACE",
   "RSI_WITH_OS",
+  "RSI_M4_INTERFACE", #senthil  
 ]
 rs911x_sock_defs = [
   "RS911X_SOCKETS",

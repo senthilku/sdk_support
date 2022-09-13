@@ -22,34 +22,54 @@
 sl_simple_button_context_t simple_btn0_context = {
   .state = 0,
   .history = 0,
+#ifndef CCP_SI917_BRINGUP
   .port = SL_SIMPLE_BUTTON_BTN0_PORT,
+#endif /* CCP_SI917_BRINGUP */
   .pin = SL_SIMPLE_BUTTON_BTN0_PIN,
   .mode = SL_SIMPLE_BUTTON_BTN0_MODE,
 };
 
 const sl_button_t sl_button_btn0 = {
   .context = &simple_btn0_context,
+#ifndef CCP_SI917_BRINGUP  	
   .init = sl_simple_button_init,
   .get_state = sl_simple_button_get_state,
   .poll = sl_simple_button_poll_step,
   .enable = sl_simple_button_enable,
   .disable = sl_simple_button_disable,
+#else  
+  .init = 0,
+  .get_state = 0,
+  .poll = 0,
+  .enable = 0,
+  .disable = 0,
+#endif /* CCP_SI917_BRINGUP */  
 };
 sl_simple_button_context_t simple_btn1_context = {
   .state = 0,
   .history = 0,
+#ifndef CCP_SI917_BRINGUP  
   .port = SL_SIMPLE_BUTTON_BTN1_PORT,
+#endif /* CCP_SI917_BRINGUP */  
   .pin = SL_SIMPLE_BUTTON_BTN1_PIN,
   .mode = SL_SIMPLE_BUTTON_BTN1_MODE,
 };
 
 const sl_button_t sl_button_btn1 = {
   .context = &simple_btn1_context,
+#ifndef CCP_SI917_BRINGUP  	  	
   .init = sl_simple_button_init,
   .get_state = sl_simple_button_get_state,
   .poll = sl_simple_button_poll_step,
   .enable = sl_simple_button_enable,
   .disable = sl_simple_button_disable,
+#else  
+  .init = 0,
+  .get_state = 0,
+  .poll = 0,
+  .enable = 0,
+  .disable = 0,
+#endif /* CCP_SI917_BRINGUP */    
 };
 
 const sl_button_t *sl_simple_button_array[] = {

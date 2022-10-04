@@ -18,7 +18,10 @@
 #ifndef SL_SIMPLE_BUTTON_BTN0_CONFIG_H
 #define SL_SIMPLE_BUTTON_BTN0_CONFIG_H
 
+#ifndef CCP_SI917_BRINGUP 
 #include "em_gpio.h"
+#endif
+
 #include "sl_simple_button.h"
 
 // <<< Use Configuration Wizard in Context Menu >>>

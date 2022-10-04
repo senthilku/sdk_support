@@ -42,6 +42,7 @@ rs911x_src_plat = [
 
    "${wiseconnect_sdk_root}/platforms/si91x/core/security_accelerator/hmac_sha/hmac.c",
    "${wiseconnect_sdk_root}/platforms/si91x/core/security_accelerator/hmac_sha/rsi_crypto_hardware_HMAC.c",
+   #"${wiseconnect_sdk_root}/platforms/si91x/service/system/src/sl_system_init.c",
   
 ]
 
@@ -60,6 +61,7 @@ rs911x_src_sapi = [
   "${wiseconnect_sdk_root}/sapi/common/rsi_apis_rom.c",
   "${wiseconnect_sdk_root}/sapi/common/rsi_common_apis.c",
   "${wiseconnect_sdk_root}/sapi/common/rsi_device_init_apis.c",
+  "${wiseconnect_sdk_root}/sapi/common/rsi_wisemcu_hardware_setup.c",
   "${wiseconnect_sdk_root}/sapi/driver/device_interface/spi/rsi_spi_frame_rd_wr.c",
   "${wiseconnect_sdk_root}/sapi/driver/device_interface/spi/rsi_spi_functs.c",
   "${wiseconnect_sdk_root}/sapi/driver/device_interface/spi/rsi_spi_iface_init.c",
@@ -111,6 +113,7 @@ rs911x_inc_plat = [
   "${wiseconnect_sdk_root}/platforms/si91x/drivers/cmsis_driver/CMSIS/Driver/Include",
 
   "${wiseconnect_sdk_root}/platforms/si91x/core/cmsis",
+  "${wiseconnect_sdk_root}/platforms/si91x/service/system/inc",
 
    #Crypto checking
   "${wiseconnect_sdk_root}/platforms/si91x/core/security_accelerator/include",

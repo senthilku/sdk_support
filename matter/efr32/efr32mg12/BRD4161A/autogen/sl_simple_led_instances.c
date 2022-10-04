@@ -16,7 +16,9 @@
  ******************************************************************************/
 
 #include "sl_simple_led.h"
+#ifndef CCP_SI917_BRINGUP
 #include "em_gpio.h"
+#endif
 #include "sl_simple_led_led0_config.h"
 #include "sl_simple_led_led1_config.h"
 

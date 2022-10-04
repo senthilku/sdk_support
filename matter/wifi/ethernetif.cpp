@@ -20,11 +20,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifndef CCP_SI917_BRINGUP 
 #include "em_bus.h"
 #include "em_cmu.h"
 #include "em_gpio.h"
 #include "em_ldma.h"
 #include "em_usart.h"
+#endif
 
 #ifndef WF200_WIFI
 #include "FreeRTOS.h"
